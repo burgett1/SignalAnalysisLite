@@ -18,7 +18,7 @@ class signalAnalysis:
         # RPSD
         # MODULUS SQUARE | units = Signal^2/Hz^2
         for complex_number_index in range(len(sFT)):
-            sFT[complex_number_index] = modulus_square(sFT[complex_number_index])
+            sFT[complex_number_index] = signalAnalysis.modulus_square(sFT[complex_number_index])
 
         # (1/t) factor out front | units = Signal^2/Hz
         sFT = 1 / t * sFT
@@ -42,7 +42,7 @@ class signalAnalysis:
         # RPSD
         # MODULUS SQUARE | units = Signal^2/Hz^2
         for complex_number_index in range(len(sFT)):
-            sFT[complex_number_index] = modulus_square(sFT[complex_number_index])
+            sFT[complex_number_index] = signalAnalysis.modulus_square(sFT[complex_number_index])
 
         # (1/t) factor out front | units = Signal^2/Hz
         sFT = 1 / t * sFT
@@ -75,9 +75,9 @@ class signalAnalysis:
         freq_list = []
         for voxel in data_voxels:
             if spectrum_type == "PSD":
-                freq, sFT = compute_power_spectral_density(voxel, (dt * M), dt)
+                freq, sFT = signalAnalysis.compute_power_spectral_density(voxel, (dt * M), dt)
             if spectrum_type == "RPSD":
-                freq, sFT = compute_root_power_spectral_density(voxel, (dt * M), dt)
+                freq, sFT = signalAnalysis.compute_root_power_spectral_density(voxel, (dt * M), dt)
             sFT_list.append(sFT)
             freq_list.append(freq)
 
